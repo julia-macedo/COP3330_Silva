@@ -48,7 +48,7 @@ public class Encrypter
             newInteger = newInteger * 10 + arr[i];
 
         // To return a String object representing an Integer’s value
-        String output = Integer.toString(newInteger);
+        String encryptedInteger = Integer.toString(newInteger);
 
         // To avoid excluding "0" at the beggining when printing, we need
         // to reinforce the string 0.
