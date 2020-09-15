@@ -6,7 +6,9 @@
 
 public class Encrypter
 {
-    public static String encrypt (String integer)
+    String encryptedInteger = "";
+
+    public String encrypt (String integer)
     {
         // Create an array of integers of size 4 and fill it with the given string
         int arr[] = new int[4];
@@ -30,7 +32,7 @@ public class Encrypter
         }
 
         // To move string positions, we need a temporary variable as well.
-        // Also, remeber to +1 for the positions
+        // Also, remember to +1 for the positions
 
         // Swap the first digit with the third
         int temp2 = arr[0];
@@ -48,14 +50,14 @@ public class Encrypter
             newInteger = newInteger * 10 + arr[i];
 
         // To return a String object representing an Integer’s value
-        String encryptedInteger = Integer.toString(newInteger);
+        this.encryptedInteger = Integer.toString(newInteger);
 
-        // To avoid excluding "0" at the beggining when printing, we need
+        // To avoid excluding "0" at the beginning when printing, we need
         // to reinforce the string 0.
         if(arr[0] == 0)
-            encryptedInteger = "0" + encryptedInteger;
+            this.encryptedInteger = "0" + this.encryptedInteger;
 
         // Return the encrypted integer as a String
-        return encryptedInteger;
+        return this.encryptedInteger;
     }
 }

@@ -8,7 +8,10 @@ public class Decrypter
 {
     // Allow the user to enter an encrypted four-digit integer and then decrypt
     // it(by reversing the encryption scheme) to form the original number.
-    public static String decrypt (String encryptedInteger)
+
+    String decryptedInteger = "";
+
+    public String decrypt (String encryptedInteger)
     {
         int arr[] = new int[4];
         for(int i = 0; i < 4; i++)
@@ -29,7 +32,7 @@ public class Decrypter
 
         // To reverse the math operation, I created a table with single results for
         // each encrypted digit, as there was no repetition, it was easy to link
-        // them to their orginal digit by using cases.
+        // them to their original digit by using cases.
         for(int i = 0; i < 4; i++)
         {
             int digit = arr[i];
@@ -83,13 +86,13 @@ public class Decrypter
             newInteger = newInteger * 10 + arr[i];
 
         // To return a String object representing an Integer’s value
-        String decryptedInteger = Integer.toString(newInteger);
+        this.decryptedInteger = Integer.toString(newInteger);
 
-        // To avoid excluding "0" at the beggining when printing, we need
+        // To avoid excluding "0" at the beginning when printing, we need
         // to reinforce the string 0.
         if(arr[0] == 0)
-            decryptedInteger = "0" + decryptedInteger;
+            this.decryptedInteger = "0" + this.decryptedInteger;
 
-        return decryptedInteger;
+        return this.decryptedInteger;
     }
 }
