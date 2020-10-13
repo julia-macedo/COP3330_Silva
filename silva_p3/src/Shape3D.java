@@ -1,2 +1,5 @@
-package PACKAGE_NAME;public class Shape3D {
+public abstract class Shape3D extends Shape
+{
+    public abstract double getArea();
+    public abstract double getVolume();
 }

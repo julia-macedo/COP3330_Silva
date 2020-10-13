@@ -1,2 +1,4 @@
-package PACKAGE_NAME;public class Shape {
+public abstract class Shape
+{
+    public abstract String getName();
 }
