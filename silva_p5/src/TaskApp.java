@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class TaskApp
 {
-    private static final Scanner inputTask = new Scanner(System.in);// handles user's input
+    private static final Scanner userInput = new Scanner(System.in);// handles user's input
     private static TaskList taskList; // = new TaskList();
 
 // ------------------------------------------------------------------------------------------------------------------
@@ -34,8 +34,9 @@ public class TaskApp
 
         try
         {
-            int action = inputTask.nextInt();
+            int action = userInput.nextInt();
 
+            // create new list
             if (action == 1)
             {
                 taskList =  new TaskList();
@@ -43,14 +44,16 @@ public class TaskApp
                 printOperationalMenu();
                 return true;
             }
+
+            // load an existing list
             else if (action == 2)
             {
-                inputTask.nextLine();
-                // load an existing list
+                userInput.nextLine();
+
 
                 taskList = new TaskList();
                 System.out.println("Enter the name of the file: ");
-                String fileName = inputTask.nextLine();
+                String fileName = userInput.nextLine();
 
                 taskList.loadList(fileName);
                 System.out.println(fileName + " has been loaded.");
@@ -59,16 +62,14 @@ public class TaskApp
                 return true;
             }
 
-            else if (action == 3)
-            {
-                // quit --> make while false
-                return false;
-            }
+            // quit --> make while false
+            else if (action == 3) {return false;}
 
+            // if user press any other integer other than 1-3
             else
             {
                 System.out.println("Invalid Entry! Please use the keys 1-3");
-                // inputTask.nextLine();
+                userInput.nextLine();
                 return true;
             }
         }
@@ -76,14 +77,14 @@ public class TaskApp
         catch(NullPointerException ex)
         {
             System.out.println("FLAG Invalid entry! Please use the keys 1-3");
-            inputTask.nextLine();
+            userInput.nextLine();
             return true;
         }
-
+        // if user press anything that is not the integers 1-3
         catch(InputMismatchException ex)
         {
             System.out.println("FLAGGGGGGG Invalid entry! Please use the keys 1-3");
-            inputTask.nextLine();
+            userInput.nextLine();
             return true;
         }
     }
@@ -122,7 +123,7 @@ public class TaskApp
 
         try
         {
-            int option = inputTask.nextInt();
+            int option = userInput.nextInt();
 
             // view the list
             if (option == 1)
@@ -294,7 +295,7 @@ public class TaskApp
                 return false;
             }
 
-            // default error
+            // default error --> wrong integer
             else
             {
                 System.out.println("Invalid Entry! Please use the keys 1-6");
@@ -302,10 +303,11 @@ public class TaskApp
             }
         }
 
+        // any key besides an integer
         catch(InputMismatchException ex)
         {
             System.out.println("Invalid entry! Please use the keys 1-6");
-            inputTask.nextLine();
+            userInput.nextLine();
             return true;
         }
     }

@@ -20,6 +20,4 @@ public class Circle extends Shape2D
     {
         return this.radius * this.radius * pi;
     }
-
-
 }

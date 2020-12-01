@@ -11,6 +11,10 @@ public class TaskItem
     private String dueDate;
     private boolean complete;
 
+// ------------------------------------------------------------------------------------------------------------------
+//                                            Class Constructor
+// ------------------------------------------------------------------------------------------------------------------
+
     public TaskItem(String title, String description, String dueDate)
     {
         if (isTitleValid(title))
@@ -42,7 +46,7 @@ public class TaskItem
     }
 
 // ------------------------------------------------------------------------------------------------------------------
-//                                            Helper Methods
+//                                            Checker Methods
 // ------------------------------------------------------------------------------------------------------------------
 
     public boolean isTitleValid(String title)
@@ -74,30 +78,18 @@ public class TaskItem
         return true;
     }
 
-    public String getTitle()
-    {
-        return this.title;
-    }
+// ------------------------------------------------------------------------------------------------------------------
+//                                            Getters and Setters Methods
+// ------------------------------------------------------------------------------------------------------------------
+    public String getTitle() {return this.title;}
 
-    public void setTitle(String title)
-    {
-        this.title = title;
-    }
+    public void setTitle(String title) {this.title = title;}
 
-    public String getDescription()
-    {
-        return this.description;
-    }
+    public String getDescription() {return this.description;}
 
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
+    public void setDescription(String description) {this.description = description;}
 
-    public String getDueDate()
-    {
-        return this.dueDate;
-    }
+    public String getDueDate() {return this.dueDate;}
 
     public void setDueDate(String dueDate)
     {
@@ -112,15 +104,13 @@ public class TaskItem
         }
     }
 
-    public boolean isComplete()
-    {
-        return this.complete;
-    }
+    public boolean isComplete() {return this.complete;}
 
-    public void setComplete(boolean complete)
-    {
-        this.complete = complete;
-    }
+    public void setComplete(boolean complete) {this.complete = complete;}
+
+// ------------------------------------------------------------------------------------------------------------------
+//                                            Printing Methods
+// ------------------------------------------------------------------------------------------------------------------
 
     public void printItem()
     {
@@ -129,5 +119,4 @@ public class TaskItem
         else
             System.out.println("[" + dueDate + "] " + title + ": " + description);
     }
-
 }

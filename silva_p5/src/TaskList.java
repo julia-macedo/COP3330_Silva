@@ -1,24 +1,21 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.*;
 
-// A class that maintains a collection of these data items
-public class TaskList
+public class TaskList 
 {
     // A task list shall contain 0 or more task items
     private static ArrayList<TaskItem> myList;
 
+// ------------------------------------------------------------------------------------------------------------------
+//                                            Class Constructor
+// ------------------------------------------------------------------------------------------------------------------
     public TaskList()
     {
         myList = new ArrayList<>();
     }
 
-    public ArrayList<TaskItem> getItemList()
-    {
-        return this.myList;
-    }
+    public ArrayList<TaskItem> getItemList() {return this.myList;}
 // ------------------------------------------------------------------------------------------------------------------
 //                                      Saving and Loading Methods
 // ------------------------------------------------------------------------------------------------------------------
@@ -59,7 +56,7 @@ public class TaskList
 
         catch (FileNotFoundException e)
         {
-            System.out.println("An error occurred.");
+            System.out.println("An error occurred! :(");
             e.printStackTrace();
         }
     }
@@ -71,10 +68,10 @@ public class TaskList
     public static void printTaskList()
     {
         if(myList.size() < 1)
-            System.out.println("empty list");
+            System.out.println("~empty list~");
         else
         {
-            System.out.println("Current Tasks");
+            System.out.println("Current Items");
             System.out.println("-------------");
             for(int i = 0; i < myList.size(); i++)
             {
@@ -86,10 +83,7 @@ public class TaskList
     }
 
     // Case 2
-    public void addItem(TaskItem newItem)
-    {
-        myList.add(newItem);
-    }
+    public void addItem(TaskItem newItem) {myList.add(newItem);}
 
     // Case 3
     public void editItem(int index, int size, String title, String description, String dueDate)
@@ -172,30 +166,18 @@ public class TaskList
         {
             if(completedListSize == 0)
             {
-                throw new IllegalArgumentException("ERROR: There are no Completed tasks");
+                throw new IllegalArgumentException("ERROR: all items are already unmarked");
             }
             if(index > completedListSize || index < 0)
             {
-                throw new IllegalArgumentException("ERROR: Choose an existing task");
+                throw new IllegalArgumentException("ERROR: please,choose an existing task!");
             }
             myList.get(index).setComplete(false);
         }
 
         catch (IllegalArgumentException ex)
         {
-            System.out.println("ERROR unmarking item");
+            System.out.println("ERROR unmarking item!");
         }
     }
-
-    /*
-    public TaskItem getItem(int givenIndex)
-    {
-        return myList.get(givenIndex);
-    }
-
-    public int getListSize()
-    {
-        return myList.size();
-    }
-    */
 }

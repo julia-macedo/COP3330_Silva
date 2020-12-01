@@ -8,11 +8,13 @@ public class ContactItem
     private String phoneNumber;
     private String email;
 
-    // private boolean complete;
+// ------------------------------------------------------------------------------------------------------------------
+//                                            Class Constructor
+// ------------------------------------------------------------------------------------------------------------------
 
     public ContactItem(String firstName, String lastName, String phoneNumber, String email)
     {
-        if (isFirstNameValid(firstName) || isLastNameValid(lastName) || isPhoneNumberValid(phoneNumber) || isEmailValid(email) )
+        if (isInputValid(firstName) || isInputValid(lastName) || isInputValid(phoneNumber) || isInputValid(email) )
         {
             this.firstName = firstName;
             this.lastName = lastName;
@@ -27,85 +29,40 @@ public class ContactItem
     }
 
 // ------------------------------------------------------------------------------------------------------------------
-//                                            Helper Methods
+//                                               Checker Methods
 // ------------------------------------------------------------------------------------------------------------------
 
-    public boolean isFirstNameValid(String firstName)
-    {
-        return firstName.length() > 0 ;
-    }
+    public boolean isInputValid(String userInput) { return userInput.length() > 0 ;}
 
-    public boolean isLastNameValid(String lastName)
-    {
-        return lastName.length() > 0 ;
-    }
+// ------------------------------------------------------------------------------------------------------------------
+//                                           Getters and Setters Methods
+// ------------------------------------------------------------------------------------------------------------------
 
-    private boolean isPhoneNumberValid(String phoneNumber)
-    {
-        /*
-        try {
-            validatePhoneNumber(phone);
-            //more code maybe update the database
-        } catch(PhoneNotValidException pe) {
-            JOptionPane.showMessageDialog(null,"Please enter a valid phone number");
-        } catch(Exception ex) {
-            System.err.println("Other error different that Phone not valid");
-        }
-        */
-        return phoneNumber.length() > 0;
-    }
+    public String getFirstName() {return this.firstName;}
 
-    private boolean isEmailValid(String email)
-    {
-        return email.length() >0;
-    }
+    public void setFirstName(String firstName) {this.firstName = firstName;}
 
-    public String getFirstName()
-    {
-        return this.firstName;
-    }
+    public String getLastName() {return this.lastName;}
 
-    public void setFirstName(String firstName)
-    {
-        this.firstName = firstName;
-    }
+    public void setLastName(String lastName) {this.lastName = lastName;}
 
-    public String getLastName()
-    {
-        return this.lastName;
-    }
+    public String getPhoneNumber() {return this.phoneNumber;}
 
-    public void setLastName(String lastName)
-    {
-        this.lastName = lastName;
-    }
+    public void setPhoneNumber(String phoneNumber) {this.phoneNumber = phoneNumber;}
 
-    public String getPhoneNumber()
-    {
-        return this.phoneNumber;
-    }
+    public String getEmail() {return this.email; }
 
-    public void setPhoneNumber(String phoneNumber)
-    {
-        this.phoneNumber = phoneNumber;
-    }
+    public void setEmail(String email) {this.email = email;}
 
-    public String getEmail()
-    {
-        return this.email;
-    }
+// ------------------------------------------------------------------------------------------------------------------
+//                                           Printing Methods
+// ------------------------------------------------------------------------------------------------------------------
 
-    public void setEmail(String email)
-    {
-        this.email = email;
-    }
-
-    public void printItem()
+   public void printItem()
     {
         System.out.println("First Name:" + firstName);
         System.out.println("Last Name:" + lastName);
         System.out.println("Phone Number:" + phoneNumber);
         System.out.println("Email Address:" + email);
     }
-
 }

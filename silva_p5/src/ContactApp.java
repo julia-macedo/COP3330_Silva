@@ -67,7 +67,7 @@ public class ContactApp
             else
             {
                 System.out.println("Invalid Entry! Please use the keys 1-3");
-                // userInput.nextLine();
+                userInput.nextLine();
                 return true;
             }
         }
