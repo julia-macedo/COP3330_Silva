@@ -55,6 +55,7 @@ public class TaskApp
                 taskList.loadList(fileName);
                 System.out.println(fileName + " has been loaded.");
 
+                printOperationalMenu();
                 return true;
             }
 

@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 
 // A class that maintains a collection of these data items
@@ -24,6 +25,10 @@ public class ContactList
     {
         return this.myList;
     }
+
+// ------------------------------------------------------------------------------------------------------------------
+//                                      Saving and Loading Methods
+// ------------------------------------------------------------------------------------------------------------------
 
     public void loadList(String fileName)
     {
@@ -145,6 +150,7 @@ public class ContactList
     }
 
     // Case 5
+
     public void saveFile(String fileName)
     {
         try
@@ -152,7 +158,7 @@ public class ContactList
             Formatter file = new Formatter(fileName);
             for (ContactItem item: myList)
             {
-                file.format(item.getFirstName() +"\n" + item.getLastName() +"\n"+ item.getPhoneNumber());
+                file.format(item.getFirstName() +"\n" + item.getLastName() +"\n"+ item.getPhoneNumber()+"\n"+ item.getEmail());
             }
             file.close();
         }

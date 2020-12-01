@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 // A class that maintains a collection of these data items
@@ -13,53 +15,52 @@ public class TaskList
         myList = new ArrayList<>();
     }
 
-    public TaskList(String fileName) throws FileNotFoundException
-    {
-        myList = new ArrayList<>();
-
-        loadList(fileName);
-    }
-
     public ArrayList<TaskItem> getItemList()
     {
         return this.myList;
     }
+// ------------------------------------------------------------------------------------------------------------------
+//                                      Saving and Loading Methods
+// ------------------------------------------------------------------------------------------------------------------
+
+    public void saveFile(String fileName)
+    {
+        try
+        {
+            Formatter file = new Formatter(fileName);
+            for (TaskItem item: myList)
+            {
+                file.format(item.getTitle() +"\n" + item.getDescription() +"\n"+ item.getDueDate());
+            }
+            file.close();
+        }
+
+        catch (Exception ex)
+        {
+            System.out.println("Error saving...");
+        }
+
+        System.out.println("");
+    }
 
     public void loadList(String fileName)
     {
-        ArrayList<TaskItem> loadedList = myList;
-        myList = new ArrayList<>();
-
         try
         {
-            Scanner input = new Scanner(new File(fileName));
-            String type = input.nextLine();
-
-            if (type.equalsIgnoreCase("TaskList"))
+            File myObj = new File(fileName);
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine())
             {
-                while (input.hasNext())
-                {
-                    String title = input.nextLine();
-                    String description = input.nextLine();
-                    String dueDate = input.nextLine();
-
-                    TaskItem taskItem = new TaskItem(title, description, dueDate);
-
-                    this.addItem(taskItem);
-                }
+                String data = myReader.nextLine();
+                System.out.println(data);
             }
-
-            else
-            {
-                myList = loadedList;
-                throw new InputMismatchException("Filename entered is invalid.");
-            }
+            myReader.close();
         }
-        catch (FileNotFoundException ex)
-        {
-            myList = loadedList;
-            throw new InputMismatchException("There are no files with that name.");
 
+        catch (FileNotFoundException e)
+        {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
         }
     }
 // ------------------------------------------------------------------------------------------------------------------
@@ -186,27 +187,7 @@ public class TaskList
         }
     }
 
-    // Case 5
-    public void saveFile(String fileName)
-    {
-        try
-        {
-            Formatter file = new Formatter(fileName);
-            for (TaskItem item: myList)
-            {
-                file.format(item.getTitle() +"\n" + item.getDescription() +"\n"+ item.getDueDate());
-            }
-            file.close();
-        }
-
-        catch (Exception ex)
-        {
-            System.out.println("Error saving...");
-        }
-
-        System.out.println("");
-    }
-
+    /*
     public TaskItem getItem(int givenIndex)
     {
         return myList.get(givenIndex);
@@ -216,4 +197,5 @@ public class TaskList
     {
         return myList.size();
     }
+    */
 }
