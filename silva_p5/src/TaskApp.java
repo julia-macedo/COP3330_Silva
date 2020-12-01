@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -50,12 +51,10 @@ public class TaskApp
             {
                 userInput.nextLine();
 
-
                 taskList = new TaskList();
                 System.out.println("Enter the name of the file: ");
                 String fileName = userInput.nextLine();
 
-                taskList.loadList(fileName);
                 System.out.println(fileName + " has been loaded.");
 
                 printOperationalMenu();
@@ -83,7 +82,7 @@ public class TaskApp
         // if user press anything that is not the integers 1-3
         catch(InputMismatchException ex)
         {
-            System.out.println("FLAGGGGGGG Invalid entry! Please use the keys 1-3");
+            System.out.println("Invalid entry! Please use the keys 1-3");
             userInput.nextLine();
             return true;
         }

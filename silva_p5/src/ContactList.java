@@ -43,25 +43,44 @@ public class ContactList
         System.out.println("");
     }
 
-    public void loadList(String fileName)
+    public ArrayList loadList(String fileName)
     {
         try
         {
             File myObj = new File(fileName);
             Scanner myReader = new Scanner(myObj);
+
             while (myReader.hasNextLine())
             {
-                String data = myReader.nextLine();
-                System.out.println(data);
+                // add each line to respective characteristic
+                // first nextline --> first name
+                String firstName = myReader.nextLine();
+
+                // second nextline --> last name
+                String lastName = myReader.nextLine();
+
+                // third nextline --> phone number
+                String phoneNumber = myReader.nextLine();
+
+                // fourth nextline --> email
+                String email = myReader.nextLine();
+
+                ContactItem loadedItem= new ContactItem(firstName,lastName,phoneNumber, email);
+
+                myList.add(loadedItem);
+
+                loadedItem.printItem();
             }
             myReader.close();
         }
 
         catch (FileNotFoundException e)
         {
-            System.out.println("An error occurred.");
+            System.out.println("An error occurred! File not found :(");
             e.printStackTrace();
         }
+
+        return myList;
     }
 
 // ------------------------------------------------------------------------------------------------------------------

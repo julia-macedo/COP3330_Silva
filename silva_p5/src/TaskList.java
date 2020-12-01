@@ -10,10 +10,7 @@ public class TaskList
 // ------------------------------------------------------------------------------------------------------------------
 //                                            Class Constructor
 // ------------------------------------------------------------------------------------------------------------------
-    public TaskList()
-    {
-        myList = new ArrayList<>();
-    }
+    public TaskList() {myList = new ArrayList<>();}
 
     public ArrayList<TaskItem> getItemList() {return this.myList;}
 // ------------------------------------------------------------------------------------------------------------------
@@ -27,7 +24,7 @@ public class TaskList
             Formatter file = new Formatter(fileName);
             for (TaskItem item: myList)
             {
-                file.format(item.getTitle() +"\n" + item.getDescription() +"\n"+ item.getDueDate());
+                file.format(item.getTitle() +"\n" + item.getDescription() +"\n"+ item.getDueDate()+"\n");
             }
             file.close();
         }
@@ -40,26 +37,43 @@ public class TaskList
         System.out.println("");
     }
 
-    public void loadList(String fileName)
+    public ArrayList loadList(String fileName)
     {
         try
         {
             File myObj = new File(fileName);
             Scanner myReader = new Scanner(myObj);
+
             while (myReader.hasNextLine())
             {
-                String data = myReader.nextLine();
-                System.out.println(data);
+                // add each line to respective characteristic
+                // first nextline --> title
+                String title = myReader.nextLine();
+
+                // second nextline --> description
+                String description = myReader.nextLine();
+
+                // third nextline --> due date
+                String dueDate = myReader.nextLine();
+
+                TaskItem loadedItem= new TaskItem(title,description,dueDate);
+
+                myList.add(loadedItem);
+
+                loadedItem.printItem();
             }
             myReader.close();
         }
 
         catch (FileNotFoundException e)
         {
-            System.out.println("An error occurred! :(");
+            System.out.println("An error occurred! File not found :(");
             e.printStackTrace();
         }
+
+        return myList;
     }
+
 // ------------------------------------------------------------------------------------------------------------------
 //                                      Operational Menu Functions
 // ------------------------------------------------------------------------------------------------------------------
@@ -75,7 +89,7 @@ public class TaskList
             System.out.println("-------------");
             for(int i = 0; i < myList.size(); i++)
             {
-                System.out.printf(i+")");
+                System.out.printf(i + ")");
                 TaskItem itemPrint = myList.get(i);
                 itemPrint.printItem();
             }
