@@ -1,7 +1,7 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class ContactApp
+public class ContactApp extends App1
 {
     private static final Scanner userInput = new Scanner(System.in);
     private static ContactList contactList;
@@ -26,6 +26,7 @@ public class ContactApp
         }
 
         System.out.println("See you later!! :)");
+        printMainMenu();
     }
 
     private static boolean makeMainContactAction()
@@ -43,10 +44,11 @@ public class ContactApp
                 printOperationalMenu();
                 return true;
             }
+
+            // load an existing list
             else if (action == 2)
             {
                 userInput.nextLine();
-                // load an existing list
 
                 contactList = new ContactList();
                 System.out.println("Enter the name of the file: ");
@@ -55,6 +57,7 @@ public class ContactApp
                 contactList.loadList(fileName);
                 System.out.println(fileName + " has been loaded.");
 
+                printOperationalMenu();
                 return true;
             }
 
@@ -230,7 +233,6 @@ public class ContactApp
             // quit and go back to main menu
             else if (option == 6)
             {
-                // TODO: printMainMenu() instead
                 printMainMenuContact();
                 return false;
             }

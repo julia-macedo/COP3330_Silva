@@ -47,8 +47,9 @@ public class ContactItemTest // all good
     {
         ContactList listTest = new ContactList();
         Item newItem = new Item("Bad", "Bunny", "3059990000","badbunnybaby@miami.com");
+        listTest.addItem(newItem);
 
-        assertThrows(IllegalArgumentException.class,() -> listTest.editItem(0,0, "", "", "", ""));
+        assertThrows(IllegalArgumentException.class,() -> listTest.editItem(0,1, "", "", "", ""));
     }
 
     @Test

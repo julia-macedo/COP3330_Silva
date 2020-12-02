@@ -60,8 +60,6 @@ public class Item
         {
             throw new IllegalArgumentException("Wrong format, please use YYYY-MM-DD !");
         }
-
-        //this.complete = true;
     }
 
 // ------------------------------------------------------------------------------------------------------------------

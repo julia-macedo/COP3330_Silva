@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class TaskApp
+public class TaskApp extends App1
 {
     private static final Scanner userInput = new Scanner(System.in);// handles user's input
     private static TaskList taskList; // = new TaskList();
@@ -27,6 +27,7 @@ public class TaskApp
         }
 
         System.out.println("See you later!! :)");
+        printMainMenu();
     }
 
     private static boolean makeMainTaskAction()
@@ -56,7 +57,6 @@ public class TaskApp
                 String fileName = userInput.nextLine();
 
                 taskList.loadList(fileName);
-
                 System.out.println(fileName + " has been loaded.");
 
                 printOperationalMenu();

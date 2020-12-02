@@ -17,7 +17,7 @@ public class App1
         a.printMainMenu();
     }
 
-    private static void printMainMenu()
+    public static void printMainMenu()
     {
         boolean makeChoice = true;
 
@@ -32,11 +32,11 @@ public class App1
             makeChoice = makeChoice();
         }
 
-        System.out.println("See you later! :)");
+        System.out.println("See you later! :))");
         // TODO: stop printing the meu after we say bye
     }
 
-    private static boolean makeChoice()
+    public static boolean makeChoice()
     {
         System.out.println("Pick one option from above:");
 
@@ -63,6 +63,7 @@ public class App1
             else if (action == 3)
             {
                 // quit the program --> make while false
+                printMainMenu();
                 return false;
             }
 
