@@ -11,12 +11,6 @@ public class TaskItem extends Item // Inheritance
         super(title, description, dueDate);
     }
 
-
-
-
-
-
-
     /*
     private String title;
     private String description;

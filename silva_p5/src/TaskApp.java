@@ -225,10 +225,12 @@ public class TaskApp
                 Scanner input = new Scanner(System.in);
 
                 System.out.println("Uncompleted Tasks");
-                System.out.println("----------------");
+                System.out.println("-----------------");
 
-                for (int i = 0; i < size; i++) {
-                    if(!taskList.getItemList().get(i).isComplete()) {
+                for (int i = 0; i < size; i++)
+                {
+                    if(!taskList.getItemList().get(i).isComplete())
+                    {
                         System.out.printf("%d) [%s] %s: %s%n", i,
                                 taskList.getItemList().get(i).getDueDate(),
                                 taskList.getItemList().get(i).getTitle(),
@@ -267,6 +269,7 @@ public class TaskApp
                         completedListSize++;
                     }
                 }
+
                 userInput = input.nextInt();
                 taskList.unmarkItem(userInput, completedListSize);
 

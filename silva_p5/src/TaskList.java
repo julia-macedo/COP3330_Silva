@@ -1,3 +1,5 @@
+import org.junit.platform.commons.function.Try;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -192,7 +194,7 @@ public class TaskList
 
         catch (IllegalArgumentException ex)
         {
-            System.out.println("Failed to edit item!");
+            throw new IllegalArgumentException("Failed to edit item!");
         }
     }
 
@@ -214,7 +216,7 @@ public class TaskList
 
         catch (Exception ex)
         {
-            System.out.println("Enter proper index or no tasks available to remove");
+            throw new IllegalArgumentException("Enter proper index or no tasks available to remove");
         }
     }
 
@@ -229,7 +231,7 @@ public class TaskList
             }
             if(index > uncompletedListSize || index < 0)
             {
-                throw new IllegalArgumentException("ERROR: Choose an existing task");
+                throw new IndexOutOfBoundsException("ERROR: Choose an existing task");
             }
             myList.get(index).setComplete(true);
         }
@@ -258,9 +260,37 @@ public class TaskList
 
         catch (IllegalArgumentException ex)
         {
-            System.out.println("ERROR unmarking item!");
+            throw new IllegalArgumentException("ERROR unmarking item!");
         }
     }
+
+    public int getListSize()
+    {
+       return myList.size();
+    }
+
+    /*
+    public int uncompletedListSize()
+    {
+        int counter = 0;
+        for(Item i : myList)
+        {
+            counter ++;
+        }
+        return counter;
+    }
+
+    public int completedListSize()
+    {
+        int counter = 0;
+        for(Item i  : myList)
+        {
+            counter ++;
+        }
+        return counter;
+
+    }
+    */
 // ------------------------------------------------------------------------------------------------------------------
 //                                      Operational Menu Functions
 // ------------------------------------------------------------------------------------------------------------------
@@ -382,4 +412,45 @@ public class TaskList
         }
     }
     */
+// ------------------------------------------------------------------------------------------------------------------
+//                                      New Operational Menu Functions using Item
+// ------------------------------------------------------------------------------------------------------------------
+
+    public String getTitleWithIndex(int index)
+    {
+        try
+        {
+            return myList.get(index).getTitle();
+        }
+        catch (IllegalArgumentException e)
+        {
+            throw new IndexOutOfBoundsException("Invalid index");
+        }
+
+    }
+
+    public String getDescriptionWithIndex(int index)
+    {
+        try
+        {
+            return myList.get(index).getDescription();
+        }
+        catch (IllegalArgumentException e)
+        {
+            throw new IndexOutOfBoundsException("Invalid index");
+        }
+    }
+
+    public String getDueDateWithIndex(int index)
+    {
+        try
+        {
+            return myList.get(index).getDueDate();
+        }
+        catch (IllegalArgumentException e)
+        {
+            throw new IndexOutOfBoundsException("Invalid index");
+        }
+    }
+
 }
