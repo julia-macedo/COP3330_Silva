@@ -55,6 +55,8 @@ public class TaskApp
                 System.out.println("Enter the name of the file: ");
                 String fileName = userInput.nextLine();
 
+                taskList.loadList(fileName);
+
                 System.out.println(fileName + " has been loaded.");
 
                 printOperationalMenu();
@@ -150,7 +152,7 @@ public class TaskApp
                 System.out.print("Task due date (YYYY-MM-DD): ");
                 dueDate = input.nextLine();
 
-                TaskItem newTask = new TaskItem(title, description, dueDate);
+                Item newTask = new Item(title, description, dueDate);
 
                 taskList.addItem(newTask);
 

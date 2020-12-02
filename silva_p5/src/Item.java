@@ -1,33 +1,38 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.lang.IllegalArgumentException;
 import java.util.Date;
 
-// A data model of the items that are going to be stored in the task list
-public class TaskItem extends Item // Inheritance
+public class Item
 {
-    public TaskItem(String title, String description, String dueDate)
-    {
-        super(title, description, dueDate);
-    }
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
+    private String email;
 
-
-
-
-
-
-
-    /*
     private String title;
     private String description;
     private String dueDate;
     private boolean complete;
-
 // ------------------------------------------------------------------------------------------------------------------
-//                                            Class Constructor
+//                                            Class Constructors Polymorphism
 // ------------------------------------------------------------------------------------------------------------------
+    public Item(String firstName, String lastName, String phoneNumber, String email)
+    {
+        if (isInputValid(firstName) || isInputValid(lastName) || isInputValid(phoneNumber) || isInputValid(email) )
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.phoneNumber = phoneNumber;
+            this.email = email;
+        }
 
-    public TaskItem(String title, String description, String dueDate)
+        else
+        {
+            throw new IllegalArgumentException("Not all your field can be empty!");
+        }
+    }
+
+    public Item(String title, String description, String dueDate)
     {
         if (isTitleValid(title))
         {
@@ -38,7 +43,7 @@ public class TaskItem extends Item // Inheritance
             throw new IllegalArgumentException("This title is not valid; must be at least 1 character long!");
         }
 
-        if (isDescriptionValid(description))
+        if (isInputValid(description))
         {
             this.description = description;
         }
@@ -53,22 +58,18 @@ public class TaskItem extends Item // Inheritance
         }
         else
         {
-            System.out.println("Wrong format, please use YYYY-MM-DD !");
+            throw new IllegalArgumentException("Wrong format, please use YYYY-MM-DD !");
         }
     }
 
 // ------------------------------------------------------------------------------------------------------------------
-//                                            Checker Methods
+//                                               Checker Methods
 // ------------------------------------------------------------------------------------------------------------------
+    public boolean isInputValid(String userInput) { return userInput.length() > 0 ;}
 
     public boolean isTitleValid(String title)
     {
         return title.length() > 1 ;
-    }
-
-    public boolean isDescriptionValid(String description)
-    {
-        return description.length() > 0 ;
     }
 
     private boolean isDueDateValid(String dueDate)
@@ -89,10 +90,26 @@ public class TaskItem extends Item // Inheritance
         }
         return true;
     }
+// ------------------------------------------------------------------------------------------------------------------
+//                                           Getters and Setters Methods
+// ------------------------------------------------------------------------------------------------------------------
 
-// ------------------------------------------------------------------------------------------------------------------
-//                                            Getters and Setters Methods
-// ------------------------------------------------------------------------------------------------------------------
+    public String getFirstName() {return this.firstName;}
+
+    public void setFirstName(String firstName) {this.firstName = firstName;}
+
+    public String getLastName() {return this.lastName;}
+
+    public void setLastName(String lastName) {this.lastName = lastName;}
+
+    public String getPhoneNumber() {return this.phoneNumber;}
+
+    public void setPhoneNumber(String phoneNumber) {this.phoneNumber = phoneNumber;}
+
+    public String getEmail() {return this.email; }
+
+    public void setEmail(String email) {this.email = email;}
+
     public String getTitle() {return this.title;}
 
     public void setTitle(String title) {this.title = title;}
@@ -121,15 +138,22 @@ public class TaskItem extends Item // Inheritance
     public void setComplete(boolean complete) {this.complete = complete;}
 
 // ------------------------------------------------------------------------------------------------------------------
-//                                            Printing Methods
+//                                           Printing Methods --> Polymorphism
 // ------------------------------------------------------------------------------------------------------------------
 
-    public void printItem()
+    public void printItem(String firstName, String lastName, String phoneNumber, String email)
+    {
+        System.out.println("First Name:" + firstName);
+        System.out.println("Last Name:" + lastName);
+        System.out.println("Phone Number:" + phoneNumber);
+        System.out.println("Email Address:" + email);
+    }
+
+    public void printItem(String title, String description, String dueDate)
     {
         if(this.isComplete())
             System.out.println("***[" + dueDate + "] " + title + ": " + description);
         else
             System.out.println("[" + dueDate + "] " + title + ": " + description);
     }
-  */
 }
